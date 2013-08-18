@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+			<script>
+	    var currentdate = new Date(); 
+        var datetime = "Date:     " + (currentdate.getMonth()+1)  + "/" 
+				+ currentdate.getDate() + "/"
+                + currentdate.getFullYear() + "     Time:     "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+		
+		$('#timestamp').html(datetime);
+		alert(datetime)
+	</script>
+	
+        <title>Timestamped statements</title>
+    </head>
+    
+
+	{% for content in contents %}
+        <div class="content">
+            <div class="content-title">{{content.title}}</div>
+            <pre class="content-body">{{content.content}}</pre>
+            <pre class="content-body">{{content.created}}</pre> 
+			<pre class="content-body">{{content.timestamp}}</pre>
+        
+        </div>
+    {% endfor %}
+	
+	<hr>
+	
+    <body>
+
+    
+    <form method="post">
+        
+        <label>
+            <div>Content {{error}}</div>
+        
+            <textarea name="content">{{content}}</textarea>
+        
+        </label>
+		
+		 <label>
+            <div>Password</div> 
+            <input type="text" name="password">
+        </label> 
+	
+		
+        
+        <input type="submit">
+    </form>
+    
+    
+    
+    </body>
+</html>
